@@ -1,0 +1,40 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #deviceForm="ngForm">
+      <div class="form-group">
+        <label for="id">Type</label>
+        <input type="text" [(ngModel)]="device.id"
+               class="form-control"
+               id="id"
+               name="id"
+               placeholder="Enter device id"
+               required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">ID is required</div>
+      
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" [(ngModel)]="device.type"
+          class="form-control"
+          id="type"
+          name="type"
+          placeholder="Enter device type"
+          required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">Type is required</div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" [(ngModel)]="device.state"
+          class="form-control"
+          id="state"
+          name="state"
+          placeholder="Enter device state"
+          required #email="ngModel">
+        <div [hidden]="!email.pristine" class="alert alert-danger">State is required</div>
+      </div>
+      <button type="submit" [disabled]="!deviceForm.form.valid"
+        class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
