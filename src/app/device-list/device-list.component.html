@@ -3,16 +3,21 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">Id</th>
           <th scope="col">Type</th>
           <th scope="col">State</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let device of devices">
           <td>{{ device.id }}</td>
-          <td>{{ device.type }}</td>
-          <td>{{ device.state }}</td>
+          <td>{{ device.deviceType }}</td>
+          <td>{{ device.deviceState }}</td>
+          <td><button type="submit" class="btn btn-info">Delete Device</button>
+            <button type="submit" class="btn btn-info">UpdateDevice </button>
+          <button type="submit" class="btn btn-info">Add Attribute</button>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -1,6 +1,6 @@
 
   export class Device {
     id: number;
-    type: string;
-    state: string;
+    deviceType: string;
+    deviceState: string;
 }

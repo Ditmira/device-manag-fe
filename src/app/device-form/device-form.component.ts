@@ -16,14 +16,12 @@ export class DeviceFormComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: DeviceServiceService) {
+    private deviceService: DeviceServiceService) {
     this.device = new Device();
   }
 
-
-  DeviceFormComponent;
   onSubmit(): void{
-    this.userService.save(this.device).subscribe(result => this.gotoDeviceList());
+    this.deviceService.save(this.device).subscribe(result => this.gotoDeviceList());
   }
 
   gotoDeviceList(): any{

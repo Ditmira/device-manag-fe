@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 export class DeviceServiceService {
 
   private devicesUrl: string;
-
   constructor(private http: HttpClient) {
     this.devicesUrl = 'http://localhost:8080/devices';
   }
@@ -16,7 +15,11 @@ export class DeviceServiceService {
     return this.http.get<Device[]>(this.devicesUrl);
   }
 
-  public save(user: Device): any {
-    return this.http.post<Device>(this.devicesUrl, Device);
+  public save(device: Device): any {
+    return this.http.post<Device>(this.devicesUrl, device);
   }
+ /* deleteById(device: Device): Observable<void>{
+    const url='${this.devicesUrl}${id}';
+    return this.http.delete<void>(url,this.httpOptions);
+  }*/
 }
