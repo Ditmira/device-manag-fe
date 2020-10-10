@@ -33,6 +33,27 @@
           required #email="ngModel">
         <div [hidden]="!email.pristine" class="alert alert-danger">State is required</div>
       </div>
+      <button class="btn btn-info" onclick="addAttribute()">Add Attribute</button>
+      <table class="table table-bordered table-striped" id="attributeTable">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Max Value</th>
+          <th scope="col">Min Value</th>
+          <th scope="col">Actual Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let device of devices">
+          <td>{{ attribute.id }}</td>
+          <td>{{ attribute.attributeName }}</td>
+          <td>{{ attribute.maxValue }}</td>
+          <td>{{ attribute.minValue }}</td>
+          <td>{{ attribute.actualValue }}</td>
+        </tr>
+        </tbody>
+      </table>
       <button type="submit" [disabled]="!deviceForm.form.valid"
         class="btn btn-info">Submit</button>
     </form>
