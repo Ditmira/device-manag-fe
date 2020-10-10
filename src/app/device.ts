@@ -1,12 +1,8 @@
-  export class Device {
+import {Attribute} from './attribute';
+
+export class Device {
     id: number;
     deviceType: string;
     deviceState: string;
-    attributes:[{
-     attributeId:number;
-      attributeName: string;
-      maxValue: number;
-      minValue: number;
-      actualValue: number;
-    }]
+    attributes: Attribute[];
 }

@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceFormComponent } from './device-form/device-form.component';
 import { DeviceServiceService } from './device-service.service';
+import { AttributeFormComponent } from './attribute-form/attribute-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DeviceListComponent,
-    DeviceFormComponent
+    DeviceFormComponent,
+    AttributeFormComponent
   ],
   imports: [
     BrowserModule,

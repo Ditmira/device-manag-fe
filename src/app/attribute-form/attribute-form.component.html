@@ -1,0 +1,57 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #attributeForm="ngForm">
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" [(ngModel)]="attribute.id"
+               class="form-control"
+               id="id"
+               name="id"
+               placeholder="Enter attribute id"
+               required #name="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="attributeName">Attribute name</label>
+        <input type="text" [(ngModel)]="attribute.attributeName"
+               class="form-control"
+               id="attributeName"
+               name="attributeName"
+               placeholder="Enter attribute name"
+               required #name="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="minValue">Min value</label>
+        <input type="text" [(ngModel)]="attribute.minValue"
+               class="form-control"
+               id="minValue"
+               name="minValue"
+               placeholder="Enter min value"
+               required #email="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="maxValue">Min value</label>
+        <input type="text" [(ngModel)]="attribute.maxValue"
+               class="form-control"
+               id="maxValue"
+               name="maxValue"
+               placeholder="Enter max value"
+               required #email="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="actualValue">Min value</label>
+        <input type="text" [(ngModel)]="attribute.actualValue"
+               class="form-control"
+               id="actualValue"
+               name="actualValue"
+               placeholder="Enter actual value"
+               required #email="ngModel">
+      </div>
+
+      <button type="submit" [disabled]="!attributeForm.form.valid"
+              class="btn btn-info">Submit
+      </button>
+    </form>
+  </div>
+</div>

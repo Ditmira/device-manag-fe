@@ -15,25 +15,25 @@
       <div class="form-group">
         <label for="type">Type</label>
         <input type="text" [(ngModel)]="device.deviceType"
-          class="form-control"
-          id="type"
-          name="type"
-          placeholder="Enter device type"
-          required #name="ngModel">
+               class="form-control"
+               id="type"
+               name="type"
+               placeholder="Enter device type"
+               required #name="ngModel">
       </div>
       <div [hidden]="!name.pristine" class="alert alert-danger">Type is required</div>
 
       <div class="form-group">
         <label for="state">State</label>
         <input type="text" [(ngModel)]="device.deviceState"
-          class="form-control"
-          id="state"
-          name="state"
-          placeholder="Enter device state"
-          required #email="ngModel">
+               class="form-control"
+               id="state"
+               name="state"
+               placeholder="Enter device state"
+               required #email="ngModel">
         <div [hidden]="!email.pristine" class="alert alert-danger">State is required</div>
       </div>
-      <button class="btn btn-info" onclick="addAttribute()">Add Attribute</button>
+      <button class="btn btn-info" (click)="addAttribute()">Add Attribute</button>
       <table class="table table-bordered table-striped" id="attributeTable">
         <thead class="thead-dark">
         <tr>
@@ -45,7 +45,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let device of devices">
+        <tr *ngFor="let attribute of device.attributes">
           <td>{{ attribute.id }}</td>
           <td>{{ attribute.attributeName }}</td>
           <td>{{ attribute.maxValue }}</td>
@@ -55,7 +55,8 @@
         </tbody>
       </table>
       <button type="submit" [disabled]="!deviceForm.form.valid"
-        class="btn btn-info">Submit</button>
+              class="btn btn-info">Submit
+      </button>
     </form>
   </div>
 </div>
