@@ -33,7 +33,7 @@
                required #email="ngModel">
         <div [hidden]="!email.pristine" class="alert alert-danger">State is required</div>
       </div>
-      <button class="btn btn-info" (click)="addAttribute()">Add Attribute</button>
+      <button class="btn btn-info" (click)="openDialog()">Add Attribute</button>
       <table class="table table-bordered table-striped" id="attributeTable">
         <thead class="thead-dark">
         <tr>

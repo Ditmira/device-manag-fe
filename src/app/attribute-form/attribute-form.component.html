@@ -31,7 +31,7 @@
                required #email="ngModel">
       </div>
       <div class="form-group">
-        <label for="maxValue">Min value</label>
+        <label for="maxValue">Max value</label>
         <input type="text" [(ngModel)]="attribute.maxValue"
                class="form-control"
                id="maxValue"
@@ -40,7 +40,7 @@
                required #email="ngModel">
       </div>
       <div class="form-group">
-        <label for="actualValue">Min value</label>
+        <label for="actualValue">Actual value</label>
         <input type="text" [(ngModel)]="attribute.actualValue"
                class="form-control"
                id="actualValue"
@@ -50,7 +50,7 @@
       </div>
 
       <button mat-button (click)="onNoClick()">No Thanks</button>
-      <button mat-button >Ok</button>
+      <button mat-button [mat-dialog-close]="attribute" >Ok</button>
     </form>
   </div>
 </div>

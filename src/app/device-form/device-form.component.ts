@@ -21,10 +21,10 @@ export class DeviceFormComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private deviceService: DeviceServiceService
-    // public dialog: MatDialog,
-    // public dialogRef: MatDialogRef<AttributeFormComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: Attribute
+    private deviceService: DeviceServiceService,
+    public dialog: MatDialog
+    /* public dialogRef: MatDialogRef<AttributeFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Attribute*/
   ) {
     this.device = new Device();
   }
@@ -38,15 +38,20 @@ export class DeviceFormComponent {
   }
     addAttribute(){
     this.device.attributes=this.device.attributes||[];
-    this.device.attributes.push(new Attribute());
+    this.device.attributes.push(new Attribute(0,"",0,0,0));
     }
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(AttributeFormComponent, {
-  //     width: '250px',
-  //     data: {
-  //       id: this.attribute.id, name: this.attribute.attributeName, minValue: this.attribute.minValue,
-  //       maxValue: this.attribute.maxValue, actualValue: this.attribute.actualValue
-  //     }
-  //   });
-  // }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AttributeFormComponent, {
+      width: '250px',
+      height:'250px',
+      data: {
+        id: this.attribute.id, name: this.attribute.attributeName, minValue: this.attribute.minValue,
+        maxValue: this.attribute.maxValue, actualValue: this.attribute.actualValue
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result');
+      this.device.attributes = result;
+    });
+  }
 }

@@ -20,7 +20,7 @@ export class AttributeFormComponent {
   constructor(public dialog: MatDialog,
               public dialogRef: MatDialogRef<AttributeFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Attribute) {
-    this.attribute = new Attribute();
+    this.attribute = new Attribute(0,"",0,0,0);
   }
   onNoClick(): void {
     this.dialogRef.close();

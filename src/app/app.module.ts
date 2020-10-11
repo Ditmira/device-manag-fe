@@ -12,7 +12,8 @@ import { MatDialogModule}  from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { MatDialogRef} from '@angular/material/dialog';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +29,14 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatDialogModule,
     MatButtonModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
-  providers: [DeviceServiceService],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {}
+  },DeviceServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
