@@ -5,6 +5,7 @@ import {Device} from '../device';
 import {Attribute} from '../attribute';
 import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DialogData} from '../device-form/device-form.component';
 
 @Component({
   selector: 'app-attribute-form',
@@ -19,11 +20,11 @@ export class AttributeFormComponent {
 
   constructor(public dialog: MatDialog,
               public dialogRef: MatDialogRef<AttributeFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Attribute) {
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.attribute = new Attribute(0,"",0,0,0);
   }
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.attribute);
   }
 }
 

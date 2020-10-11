@@ -5,7 +5,13 @@ import {Device} from '../device';
 import {Attribute} from '../attribute';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {AttributeFormComponent} from '../attribute-form/attribute-form.component';
-
+export interface DialogData {
+  id: number;
+  name: string;
+  minValue: number;
+  maxValue:number;
+  actualValue: number;
+}
 @Component({
   selector: 'app-device-form',
   templateUrl: './device-form.component.html',
@@ -22,9 +28,9 @@ export class DeviceFormComponent {
     private route: ActivatedRoute,
     private router: Router,
     private deviceService: DeviceServiceService,
-    public dialog: MatDialog
-    /* public dialogRef: MatDialogRef<AttributeFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Attribute*/
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<AttributeFormComponent>
+
   ) {
     this.device = new Device();
   }
@@ -36,22 +42,23 @@ export class DeviceFormComponent {
   gotoDeviceList(): any {
     this.router.navigate(['/devices']);
   }
-    addAttribute(){
-    this.device.attributes=this.device.attributes||[];
-    this.device.attributes.push(new Attribute(0,"",0,0,0));
-    }
+    // addAttribute(){
+    // this.device.attributes=this.device.attributes||[];
+    // this.device.attributes.push(new Attribute(0,"",0,0,0));
+    // }
   openDialog(): void {
     const dialogRef = this.dialog.open(AttributeFormComponent, {
       width: '250px',
       height:'250px',
       data: {
-        id: this.attribute.id, name: this.attribute.attributeName, minValue: this.attribute.minValue,
-        maxValue: this.attribute.maxValue, actualValue: this.attribute.actualValue
-      }
+        id: this.attribute.id,  name: this.attribute.attributeName, minValue: this.attribute.minValue,
+      maxValue: this.attribute.maxValue, actualValue: this.attribute.actualValue
+      }//
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('result');
+      console.log(result);
       this.device.attributes = result;
     });
+    //dialogRef.close(this.attribute);
   }
 }
