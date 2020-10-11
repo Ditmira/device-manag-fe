@@ -1,6 +1,6 @@
 <div class="card my-5">
   <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #attributeForm="ngForm">
+    <form  #attributeForm="ngForm">
       <div class="form-group">
         <label for="id">Id</label>
         <input type="text" [(ngModel)]="attribute.id"
@@ -49,9 +49,8 @@
                required #email="ngModel">
       </div>
 
-      <button type="submit" [disabled]="!attributeForm.form.valid"
-              class="btn btn-info">Submit
-      </button>
+      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button mat-button >Ok</button>
     </form>
   </div>
 </div>

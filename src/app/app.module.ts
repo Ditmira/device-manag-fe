@@ -8,6 +8,10 @@ import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceFormComponent } from './device-form/device-form.component';
 import { DeviceServiceService } from './device-service.service';
 import { AttributeFormComponent } from './attribute-form/attribute-form.component';
+import { MatDialogModule}  from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { AttributeFormComponent } from './attribute-form/attribute-form.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [DeviceServiceService],
   bootstrap: [AppComponent]
