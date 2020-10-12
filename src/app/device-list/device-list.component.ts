@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Device } from '../device';
+import { Device } from '../modules/device';
 import { DeviceServiceService } from '../device-service.service';
 @Component({
   selector: 'app-device-list',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Device } from './device';
+import { Device } from './modules/device';
 import { Observable } from 'rxjs';
-import {Attribute} from './attribute';
+import {Attribute} from './modules/attribute';
 
   @Injectable()
   export class DeviceServiceService {
