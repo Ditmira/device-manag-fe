@@ -1,17 +1,11 @@
 import {Component, Inject} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DeviceServiceService} from '../device-service.service';
-import {Device} from '../device';
-import {Attribute} from '../attribute';
+import {Device} from '../modules/device';
+import {Attribute} from '../modules/attribute';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {AttributeFormComponent} from '../attribute-form/attribute-form.component';
-export interface DialogData {
-  id: number;
-  name: string;
-  minValue: number;
-  maxValue:number;
-  actualValue: number;
-}
+
 @Component({
   selector: 'app-device-form',
   templateUrl: './device-form.component.html',
@@ -50,14 +44,14 @@ export class DeviceFormComponent {
     const dialogRef = this.dialog.open(AttributeFormComponent, {
       width: '250px',
       height:'250px',
-      data: {
-        id: this.attribute.id,  name: this.attribute.attributeName, minValue: this.attribute.minValue,
-      maxValue: this.attribute.maxValue, actualValue: this.attribute.actualValue
-      }//
+      // data: {
+      //   id: this.attribute.id,  name: this.attribute.attributeName, minValue: this.attribute.minValue,
+      // maxValue: this.attribute.maxValue, actualValue: this.attribute.actualValue
+      // }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.device.attributes = result;
+      this.device.attributes.push(result);
     });
     //dialogRef.close(this.attribute);
   }
