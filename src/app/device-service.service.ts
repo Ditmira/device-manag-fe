@@ -8,8 +8,9 @@ import {Attribute} from './modules/attribute';
   export class DeviceServiceService {
 
     private devicesUrl: string;
+    device: Device;
     constructor(private http: HttpClient) {
-      this.devicesUrl = 'http://localhost:8080/devices';
+      this.devicesUrl = 'http://localhost:8080/devices/';
     }
 
     public findAll(): Observable<Device[]> {
@@ -19,15 +20,11 @@ import {Attribute} from './modules/attribute';
     public save(device: Device): any {
       return this.http.post<Device>(this.devicesUrl, device);
      }
-    // attributeList: Attribute[] = [];
-    // addAttribute(attribute: Attribute){
-    //   console.log(attribute);
-    // this.attributeList.push(attribute);
-    //
-    // }
 
-   /* deleteById(device: Device): Observable<void>{
-      const url='${this.devicesUrl}${id}';
-      return this.http.delete<void>(url,this.httpOptions);
-    }*/
+    deleteById(id: number): any{
+      console.log("vjen deri ktu dhe se fshin");
+      let url = this.devicesUrl.concat(id.toString());
+      return this.http.delete(url);
+
+    }
   }
