@@ -19,9 +19,9 @@ export class DeviceListComponent implements OnInit {
 
   deleteById(id: number): any {
     console.log(id);
-    this.deviceService.deleteById(this.device.id).subscribe(result => this.gotoDeviceList());
-  }
 
+    this.deviceService.deleteById(id).subscribe(result => this.ngOnInit());
+  }
 
 
   gotoDeviceList(): any {

@@ -10,7 +10,7 @@ import {Attribute} from './modules/attribute';
     private devicesUrl: string;
     device: Device;
     constructor(private http: HttpClient) {
-      this.devicesUrl = 'http://localhost:8080/devices/';
+      this.devicesUrl = 'http://localhost:8080/devices';
     }
 
     public findAll(): Observable<Device[]> {
@@ -22,9 +22,9 @@ import {Attribute} from './modules/attribute';
      }
 
     deleteById(id: number): any{
-      console.log("vjen deri ktu dhe se fshin");
-      let url = this.devicesUrl.concat(id.toString());
-      return this.http.delete(url);
+      console.log(id);
+      let url = this.devicesUrl.concat('/').concat(id.toString());
+      return this.http.delete<Device>(url);
 
     }
   }
