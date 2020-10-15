@@ -23,15 +23,19 @@ export class DeviceListComponent implements OnInit {
     this.deviceService.deleteById(id).subscribe(result => this.ngOnInit());
   }
 
-
-  gotoDeviceList(): any {
-    this.router.navigate(['/devices']);
-  }
-
   ngOnInit(): any {
     this.deviceService.findAll().subscribe(data => {
       this.devices = data;
     });
+  }
+  updateById(id:number): any{
+    console.log(id);
+    this.deviceService.updateById(id).subscribe(result => this.gotoDevice(id));
+  }
+
+  gotoDevice(id: number): any {
+    let url= '/device'.concat(id.toString());
+    this.router.navigate([url]);
   }
 
 }

@@ -47,6 +47,5 @@ export class DeviceFormComponent {
       console.log(result);
       this.device.attributes.push(result);
     });
-
   }
 }

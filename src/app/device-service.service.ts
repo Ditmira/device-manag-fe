@@ -25,6 +25,11 @@ import {Attribute} from './modules/attribute';
       console.log(id);
       let url = this.devicesUrl.concat('/').concat(id.toString());
       return this.http.delete<Device>(url);
+    }
 
+    updateById(id:number): any{
+      console.log(id);
+      let url = this.devicesUrl.concat('/').concat(id.toString());
+      return this.http.post<Device>(url,id);
     }
   }
