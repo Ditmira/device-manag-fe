@@ -38,4 +38,7 @@ export class DeviceListComponent implements OnInit {
     this.router.navigate([url]);
   }
 
+  viewById(id: number): any{
+
+  }
 }

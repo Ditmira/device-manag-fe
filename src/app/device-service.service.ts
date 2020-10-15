@@ -32,4 +32,8 @@ import {Attribute} from './modules/attribute';
       let url = this.devicesUrl.concat('/').concat(id.toString());
       return this.http.post<Device>(url,id);
     }
+
+    viewById(id: number): any{
+
+    }
   }

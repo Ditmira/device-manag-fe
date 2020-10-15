@@ -15,7 +15,8 @@
           <td>{{ device.deviceType }}</td>
           <td>{{ device.deviceState }}</td>
           <td><button (click)="deleteById(device.id)" class="btn btn-info">Delete Device</button>
-            <button (click)="updateById(device.id)" class="btn btn-info">UpdateDevice </button>
+            <button (click)="updateById(device.id)" class="btn btn-info">Update Device </button>
+            <button (click)="viewById(device.id)" class="btn btn-info">View Device Info </button>
           </td>
         </tr>
       </tbody>
