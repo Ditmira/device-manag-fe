@@ -14,12 +14,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatDialogRef} from '@angular/material/dialog';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { DeviceInfoComponent } from './device-info/device-info.component';
 @NgModule({
   declarations: [
     AppComponent,
     DeviceListComponent,
     DeviceFormComponent,
-    AttributeFormComponent
+    AttributeFormComponent,
+    DeviceInfoComponent
   ],
   imports: [
     BrowserModule,
