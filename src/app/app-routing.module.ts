@@ -6,33 +6,14 @@ import {AttributeFormComponent} from './attribute-form/attribute-form.component'
 import {DeviceInfoComponent} from './device-info/device-info.component';
 
 const routes: Routes = [
+  {path: '', redirectTo:'/devices', pathMatch:"full"},
   { path: 'devices', component: DeviceListComponent },
   { path: 'addDevice', component: DeviceFormComponent },
   { path: 'addAttribute', component: AttributeFormComponent},
+  { path: 'viewByID/:id', component: DeviceInfoComponent},
   { path: 'viewByID', component: DeviceInfoComponent}
 ];
-RouterModule.forRoot([
-  {
-    path: 'devices',
-    component: DeviceListComponent,
-  }
-]),
-  RouterModule.forChild([
-    {
-      path: 'devices', //parent path
-      children: [
-        {
-          path: '',
-          redirectTo: '/devices/viewByID',
-          pathMatch: 'full'
-        },
-        {
-          path: 'viewByID',
-          component: DeviceInfoComponent,
-        },
-      ]
-    }
-  ])
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
