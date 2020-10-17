@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Device} from '../modules/device';
 import {DeviceServiceService} from '../device-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-device-list',
@@ -28,17 +29,11 @@ export class DeviceListComponent implements OnInit {
       this.devices = data;
     });
   }
-  updateById(id:number): any{
-    console.log(id);
-    this.deviceService.updateById(id).subscribe(result => this.gotoDevice(id));
+  updateById(id: number){
+    this.router.navigate(['devices', id]);
   }
 
-  gotoDevice(id: number): any {
-    let url= '/device'.concat(id.toString());
-    this.router.navigate([url]);
-  }
-
-  viewById(id: number): any{
-
-  }
+  viewById(id: number){
+  this.router.navigate(['devices', id]);
+}
 }

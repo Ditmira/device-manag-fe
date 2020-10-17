@@ -57,6 +57,9 @@
       <button type="submit" [disabled]="!deviceForm.form.valid"
               class="btn btn-info">Submit
       </button>
+      <div [hidden]="!submitted">
+        <h4>You submitted successfully!</h4>
+      </div>
     </form>
   </div>
 </div>

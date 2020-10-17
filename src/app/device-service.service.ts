@@ -27,13 +27,11 @@ import {Attribute} from './modules/attribute';
       return this.http.delete<Device>(url);
     }
 
-    updateById(id:number): any{
-      console.log(id);
-      let url = this.devicesUrl.concat('/').concat(id.toString());
-      return this.http.post<Device>(url,id);
+    updateById(id:number, value: any): any{
+      return this.http.put(`${this.devicesUrl}/${id}`, value);
     }
 
     viewById(id: number): any{
-
+      return this.http.get(`${this.devicesUrl}/${id}`);
     }
   }

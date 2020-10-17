@@ -13,7 +13,8 @@ import {AttributeFormComponent} from '../attribute-form/attribute-form.component
 })
 export class DeviceFormComponent {
 
-  device: Device;
+  device: Device = new Device();
+  submitted = false;
   attribute: Attribute;
   devices: DeviceServiceService;
 
@@ -27,10 +28,21 @@ export class DeviceFormComponent {
 
   ) {
     this.device = new Device();
+    this.submitted = false;
   }
 
   onSubmit(): void {
+    this.submitted=true;
     this.deviceService.save(this.device).subscribe(result => this.gotoDeviceList());
+  }
+
+  save() {
+    this.deviceService.save(this.device).subscribe(data => {
+        console.log(data)
+        this.device = new Device();
+        this.gotoDeviceList();
+      },
+      error => console.log(error));
   }
 
   gotoDeviceList(): any {
@@ -40,8 +52,7 @@ export class DeviceFormComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(AttributeFormComponent, {
       width: '250px',
-      height:'250px',
-
+      height:'250px'
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
