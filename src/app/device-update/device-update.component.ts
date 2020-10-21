@@ -16,17 +16,17 @@ export class DeviceUpdateComponent implements OnInit{
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private deviceSerivce: DeviceServiceService,
+              private deviceService: DeviceServiceService,
               public webSocketService: WebsocketService) {
+    this.webSocketService = new WebsocketService();
 
   }
 
   ngOnInit() {
-    this.webSocketService.openConnection();
 
     this.id = this.route.snapshot.params['id'];
 
-    this.deviceSerivce.viewById(this.id)
+    this.deviceService.viewById(this.id)
       .subscribe(data => {
         console.log(data);
         this.device = data;
@@ -34,7 +34,7 @@ export class DeviceUpdateComponent implements OnInit{
   }
 
   updateDevice() {
-    this.deviceSerivce.updateById(this.id, this.device)
+    this.deviceService.updateById(this.id, this.device)
       .subscribe(data => {
         console.log(data);
         this.device = new Device();
