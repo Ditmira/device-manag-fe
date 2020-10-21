@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Device } from './modules/device';
+import { Device } from '../modules/device';
 import { Observable } from 'rxjs';
-import {Attribute} from './modules/attribute';
+import {Attribute} from '../modules/attribute';
 
   @Injectable()
   export class DeviceServiceService {
@@ -16,6 +16,10 @@ import {Attribute} from './modules/attribute';
     public findAll(): Observable<Device[]> {
       return this.http.get<Device[]>(this.devicesUrl);
     }
+
+    // public getDevice(id: number, value: any): Observable<Device[]> {
+    //   return this.http.get<Device[]>(this.devicesUrl);
+    // }
 
     public save(device: Device): any {
       return this.http.post<Device>(this.devicesUrl, device);
@@ -31,7 +35,7 @@ import {Attribute} from './modules/attribute';
       return this.http.put(`${this.devicesUrl}/${id}`, value);
     }
 
-    viewById(id: number): any{
+    viewById(id: number): Observable<any>{
       return this.http.get(`${this.devicesUrl}/${id}`);
     }
   }

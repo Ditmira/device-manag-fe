@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DeviceServiceService} from '../device-service.service';
+import {DeviceServiceService} from '../services/device-service.service';
 import {Device} from '../modules/device';
 import {Attribute} from '../modules/attribute';
 import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -13,27 +14,42 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./attribute-form.component.css']
 })
 
-export class AttributeFormComponent {
+export class AttributeFormComponent implements OnInit {
   device: Device;
   attribute: Attribute;
   devices: DeviceServiceService;
+  id: number;
+  attributeName:string;
+  minValue:number;
+  maxValue:number;
+  actualValue:number;
+  form: FormGroup;
 
   constructor(public dialog: MatDialog,
+              private fb: FormBuilder,
               public dialogRef: MatDialogRef<AttributeFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: AttributeFormComponent) {
-    this.attribute = new Attribute();
+              @Inject(MAT_DIALOG_DATA) {id, attributeName, minValue, maxValue, actualValue}:Attribute) {
+
+    this.id = id;
+    this.attributeName = attributeName;
+    this.minValue = minValue;
+    this.maxValue = maxValue;
+    this.actualValue = actualValue;
+
+    this.form = fb.group({
+      id: [id, Validators.required],
+      attributeName: [attributeName, Validators.required],
+      minValue: [minValue, Validators.required],
+      maxValue: [maxValue,Validators.required],
+      actualValue: [actualValue,Validators.required],
+    });
   }
-  onNoClick(): void {
-    this.dialogRef.close(this.attribute);
+  ngOnInit() {
+  }
+  save() {
+    this.dialogRef.close(this.form.value);
+  }
+  close() {
+    this.dialogRef.close();
   }
 }
-
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(AttributeFormComponent, {
-  //     width: '250px',
-  //     data: {
-  //       id: this.attribute.id, name: this.attribute.attributeName, minValue: this.attribute.minValue,
-  //       maxValue: this.attribute.maxValue, actualValue: this.attribute.actualValue
-  //     }
-  //   });
-  // }

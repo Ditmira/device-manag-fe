@@ -1,0 +1,20 @@
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="id">Device Id</label>
+      <input type="text" class="form-control" id="id" required [(ngModel)]="device.id" name="id">
+    </div>
+
+    <div class="form-group">
+      <label for="deviceType">Attribute Name</label>
+      <input type="text" class="form-control" id="deviceType" required [(ngModel)]="device.deviceType" name="deviceType">
+    </div>
+
+    <div class="form-group">
+      <label for="deviceState">Minimum value</label>
+      <input type="text" class="form-control" id="deviceState" required [(ngModel)]="device.deviceState" name="deviceState">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

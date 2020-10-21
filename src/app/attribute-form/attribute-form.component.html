@@ -1,3 +1,4 @@
+
 <div class="card my-5">
   <div class="card-body">
     <form  #attributeForm="ngForm">
@@ -49,8 +50,9 @@
                required #email="ngModel">
       </div>
 
-      <button mat-button (click)="onNoClick()">No Thanks</button>
-      <button mat-button [mat-dialog-close]="attribute" >Ok</button>
+      <button mat-button (click)="close()">No Thanks</button>
+      <button mat-button (click)="save()" >Ok</button>
     </form>
   </div>
 </div>
+

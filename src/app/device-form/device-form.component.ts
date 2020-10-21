@@ -1,20 +1,21 @@
 import {Component, Inject} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DeviceServiceService} from '../device-service.service';
+import {DeviceServiceService} from '../services/device-service.service';
 import {Device} from '../modules/device';
 import {Attribute} from '../modules/attribute';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import {AttributeFormComponent} from '../attribute-form/attribute-form.component';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-device-form',
   templateUrl: './device-form.component.html',
-  styleUrls: ['./device-form.component.css']
+  styleUrls: ['./device-form.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DeviceFormComponent {
 
-  device: Device = new Device();
-  submitted = false;
+  device:Device;
   attribute: Attribute;
   devices: DeviceServiceService;
 
@@ -28,17 +29,15 @@ export class DeviceFormComponent {
 
   ) {
     this.device = new Device();
-    this.submitted = false;
   }
 
   onSubmit(): void {
-    this.submitted=true;
     this.deviceService.save(this.device).subscribe(result => this.gotoDeviceList());
   }
 
   save() {
     this.deviceService.save(this.device).subscribe(data => {
-        console.log(data)
+        console.log(data);
         this.device = new Device();
         this.gotoDeviceList();
       },
@@ -51,12 +50,13 @@ export class DeviceFormComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AttributeFormComponent, {
-      width: '250px',
-      height:'250px'
+      width: '450px',
+      height:'450px'
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.device.attributes.push(result);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(result);
+    //   this.device.attributes.push(result);
+    // });
   }
+
 }

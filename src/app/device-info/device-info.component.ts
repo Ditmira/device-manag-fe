@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DeviceServiceService} from '../device-service.service';
+import {DeviceServiceService} from '../services/device-service.service';
 import {Device} from '../modules/device';
 import {Attribute} from '../modules/attribute';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
@@ -27,7 +27,7 @@ export class DeviceInfoComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    this.device = new Device();
+    //this.device = new Device();
 
     this.id = this.route.snapshot.params['id'];
 
