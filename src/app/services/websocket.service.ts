@@ -14,10 +14,10 @@ export class WebsocketService {
   connection$: WebSocketSubject<any>;
   RETRY_SECONDS = 100;
   connect(): Observable<any> {
-    return of('http://localhost:8080/devices/5').pipe(
+    return of('http://localhost:8080/devices').pipe(
       filter(apiUrl => !!apiUrl),
       // https becomes wws, http becomes ws
-      map(apiUrl => apiUrl.replace(/^http/, 'ws') + '/stream'),
+      map(apiUrl => apiUrl.replace(/^http/, 'ws')),// + '/stream'
       switchMap(wsUrl => {
         if (this.connection$) {
           return this.connection$;
