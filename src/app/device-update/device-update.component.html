@@ -7,14 +7,14 @@
 
     <div class="form-group">
       <label for="deviceType">Attribute Name</label>
-      <input type="text" class="form-control" id="deviceType" required [(ngModel)]="device.deviceType" name="deviceType">
+      <input (change)="applyChanges()" type="text" class="form-control" id="deviceType" required [(ngModel)]="device.deviceType" name="deviceType">
     </div>
 
     <div class="form-group">
       <label for="deviceState">Minimum value</label>
       <input type="text" class="form-control" id="deviceState" required [(ngModel)]="device.deviceState" name="deviceState">
     </div>
-
+    <!--<button (click)="applyChanges()" class="btn btn-success">Apply Changes</button>-->
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>

@@ -3,7 +3,9 @@ import {Device} from '../modules/device';
 import {DeviceServiceService} from '../services/device-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WebsocketService} from '../services/websocket.service';
-import {NgForm} from '@angular/forms';
+import {FormControl, NgForm} from '@angular/forms';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-device-update',
@@ -13,7 +15,9 @@ import {NgForm} from '@angular/forms';
 export class DeviceUpdateComponent implements OnInit{
   id: number;
   device: Device;
-
+  devices: Device[] = [];
+  msgCtrl = new FormControl('');
+  destroyed$ = new Subject();
   constructor(private route: ActivatedRoute,
               private router: Router,
               private deviceService: DeviceServiceService,
@@ -22,10 +26,18 @@ export class DeviceUpdateComponent implements OnInit{
 
   }
 
+  applyChanges(){
+    this.webSocketService.send({ device: this.msgCtrl.value });
+    this.msgCtrl.setValue('');
+  }
+  ngOnDestroy() {
+    this.destroyed$.next();
+  }
   ngOnInit() {
-
+    this.webSocketService.connect().pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe(device => this.devices.push(this.device));
     this.id = this.route.snapshot.params['id'];
-
     this.deviceService.viewById(this.id)
       .subscribe(data => {
         console.log(data);
